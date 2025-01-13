@@ -2,12 +2,15 @@
 
 Welcome to **Auto Website Visitor**! 🚀 This is your go-to tool to automate website visits effortlessly. Whether you're testing your site’s performance, checking analytics, or just having some fun, this tool has got you covered. Built for Windows (.exe) users and available via `pip` for Python enthusiasts. Let's dive in! 🌟
 
-![GitHub Issues](https://img.shields.io/github/issues/nayandas69/auto-website-visitor?style=flat-square&color=red&logo=github&logoColor=white)
-![GitHub Stars](https://img.shields.io/github/stars/nayandas69/auto-website-visitor?style=flat-square&color=yellow&logo=github&logoColor=white) 
-![GitHub Forks](https://img.shields.io/github/forks/nayandas69/auto-website-visitor?style=flat-square&color=brightgreen&logo=github&logoColor=white)
-![PyPI Version](https://img.shields.io/pypi/v/auto-website-visitor?style=flat-square&color=green&logo=pypi&logoColor=white)
-![Python Version](https://img.shields.io/pypi/pyversions/auto-website-visitor?style=flat-square&color=blue&logo=python&logoColor=white)
-![Discussions](https://img.shields.io/github/discussions/nayandas69/auto-website-visitor?style=flat-square&color=cyan&logo=discourse&logoColor=white)
+![GitHub Issues](https://img.shields.io/github/issues/nayandas69/auto-website-visitor?style=flat-square&color=FF5722&logo=github)
+![GitHub Stars](https://img.shields.io/github/stars/nayandas69/auto-website-visitor?style=flat-square&color=FFD700&logo=github)
+![GitHub Forks](https://img.shields.io/github/forks/nayandas69/auto-website-visitor?style=flat-square&color=4CAF50&logo=github)
+![Workflow Status](https://img.shields.io/github/actions/workflow/status/nayandas69/auto-website-visitor/python-ci.yml?style=flat-square&color=4DB6AC&logo=github)
+![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)
+![PyPI Version](https://img.shields.io/pypi/v/auto-website-visitor?style=flat-square&color=00C853&logo=pypi)
+![Python Version](https://img.shields.io/pypi/pyversions/auto-website-visitor?style=flat-square&color=42A5F5&logo=python)
+![PyPI Downloads](https://static.pepy.tech/badge/auto-website-visitor/month?style=flat-square&color=5C6BC0)
+![Total Downloads](https://static.pepy.tech/badge/auto-website-visitor?style=flat-square&color=8E24AA)
 
 ## 🔥 Features
 
