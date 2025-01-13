@@ -1,0 +1,4 @@
+selenium>=4.0.0
+colorama>=0.4.4
+webdriver-manager>=3.8.0
+requests>=2.25.1
