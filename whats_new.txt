@@ -1,45 +1,20 @@
-✨ WHAT’S NEW IN AUTO WEBSITE VISITOR ✨  
----------------------------------------  
+# 🚀 **What's New in Auto Website Visitor v0.0.2**  
 
-🌟 **v0.0.1 - The OG Drop 🚀**  
+🌟 **New Features:**  
+- **Infinite Visits Mode:** Hit those websites endlessly with a slick new "unlimited visits" option. No limits, no problems! ♾️  
+- **Proxy Validation:** Enter your proxy like a pro! We check for valid formats so you're not out here debugging typos. 🔒  
+- **Custom Cache Directory:** Your drivers now have a cool hangout spot in `~/.browser_driver_cache`—less clutter, more style. 🗄️  
 
-👋 Hey fam! We’re stoked to introduce **Auto Website Visitor**, your new bestie for automated site visits. Here’s all the shiny stuff we packed in this version:  
+🛠️ **Improvements:**  
+- **Auto-Reconnect on Internet Drops:** Got bad Wi-Fi? No stress—we've got a retry loop waiting to reconnect when you’re back online. 🔄⚡  
+- **Logs Glow-Up:** Cleaner logs and fancy console output so you’re always in the know about what's popping in the background. 📝✨  
+- **Better CLI UX:** Minimum intervals enforced (5 seconds), tighter validation, and crisp feedback keep everything user-friendly. ✅  
 
----
-
-### 💻 **Features that SLAP:**
-- **Automated Website Visits**: Just set it and forget it! ⏰  
-- **Multiple Browser Support**: Chrome or Firefox? Why not both? 😎  
-- **Headless Mode**: Run in stealth like a ninja. 🥷✨  
-- **Customizable Intervals**: You decide the vibe—fast or chill. 🕒  
-- **Proxy Support**: Sneaky-sneak your way through with proxy settings. 🕵️‍♂️  
-
----
-
-### 🛠️ **Fixes & Tweaks:**
-- First release, so no bugs to fix (yet 🤞).  
-- Optimized to run smooth AF, even on older systems.  
+🐛 **Fixes:**  
+- Squashed the bug where intervals could be *too short*—keeping it chill with a solid minimum now. 🚫⏱️  
+- **Proxy Setup for Firefox:** Fixed flaky configs—it's a seamless setup now! 🦊🔗  
+- Cleared out weird edge case crashes when launching headless in certain scenarios. 😌🔧  
 
 ---
 
-### 🧠 **Big Brain Updates:**
-- Integrated **auto-update checker**—never miss the latest flex! 🔄  
-- Added **color-coded CLI** for that ✨aesthetic✨ console output.  
-
----
-
-### 🚀 **Upcoming Hype (aka What’s Next?):**
-- **Scheduler Enhancements**: Even more control over visit timing. ⏳  
-- **Analytics Dashboard**: Stats for nerds like us 📊.  
-- **Better Proxy Configs**: More secure & seamless proxy setups.  
-
----
-
-### 💬 **Feedback = ❤️**  
-Got ideas or found a bug? Slide into our **GitHub Issues** section here:  
-👉 [https://github.com/nayandas69/auto-website-visitor/issues](https://github.com/nayandas69/auto-website-visitor/issues)  
-
----
-
-🖤 Thanks for downloading, fam! Now go automate like a boss.  
-~ Team Auto Website Visitor ✨
+**Ready to level up your automation game?** 💥 Head over to the main menu and give it a whirl. Your vibe is set to power user now! 🙌

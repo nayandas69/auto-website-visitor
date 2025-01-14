@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="auto-website-visitor",
-    version="0.0.1",
+    version="0.0.2",
     author="Nayan Das",
     author_email="nayanchandradas@hotmail.com",
     author_website="https://nayanchandradas.com",

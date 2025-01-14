@@ -2,7 +2,7 @@
 
 Hey there, awesome devs! 👋 We’re super hyped that you’re vibing with **Auto Website Visitor** 🚀. Let’s keep this party secure for everyone! Below are the deets you need to know about reporting security issues and playing it safe. 💻✨  
 
----
+---  
 
 ## 🔐 **Supported Versions**  
 
@@ -11,9 +11,10 @@ If you’re chillin’ with an old version, it’s time to glow up! ⬆️✨
 
 | Version | Supported? 📢 |  
 |---------|---------------|  
-| 0.0.1   | ✅ Yessir!     |  
+| 0.0.2   | ✅ Yessir!     |  
+| 0.0.1   | ❌ Nah, time to upgrade! |  
 
----
+---  
 
 ## 🆘 **Found a Bug or Vulnerability?** 👀🐛  
 
@@ -31,7 +32,7 @@ Uh-oh! If you’ve stumbled upon a security issue, don’t panic 😅—we’ve 
 3. **Hold tight, fam**:  
    We’ll hit you back within **48 hours**—max. Pinky promise! 🤞  
 
----
+---  
 
 ## ⚠️ **Big Fat Disclaimer**  
 
@@ -43,7 +44,7 @@ This tool is strictly for **personal use ONLY**. We’re all about ethical vibes
 
 If you break these rules and something goes sideways, it’s all on you. **We are NOT liable** for any trouble you get into, fam. Be chill, keep it legal, and don’t summon the internet police. 🚔  
 
----
+---  
 
 ## 👑 **Our Commitment to Security** ✨  
 
@@ -53,7 +54,7 @@ We take security **mad seriously** 🫡. Here’s how we roll:
 
 We’re here to vibe with you to keep this project **safe and sound** for everyone. 💙  
 
----
+---  
 
 ## 🛠️ **Security Besties**  
 
@@ -63,7 +64,7 @@ We ❤️ these tools to keep it tight:
 
 Got a better tool idea? HMU! 💌  
 
----
+---  
 
 ## 🖤 **Thanks for Being a Security Superhero!** 🙌  
 
