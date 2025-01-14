@@ -4,12 +4,16 @@ Welcome to **Auto Website Visitor**! 🚀 This is your go-to tool to automate we
 
 Adding badges to your repository is an excellent way to display key statistics or project information. Below are some suggestions for badges you could include for the `auto-website-visitor` project:
 
-![GitHub Issues](https://img.shields.io/github/issues/nayandas69/auto-website-visitor?style=flat-square&color=red&logo=github&logoColor=white)
 ![GitHub Stars](https://img.shields.io/github/stars/nayandas69/auto-website-visitor?style=flat-square&color=yellow&logo=github&logoColor=white) 
 ![GitHub Forks](https://img.shields.io/github/forks/nayandas69/auto-website-visitor?style=flat-square&color=brightgreen&logo=github&logoColor=white)
-![PyPI Version](https://img.shields.io/pypi/v/auto-website-visitor?style=flat-square&color=green&logo=pypi&logoColor=white)
-![Python Version](https://img.shields.io/pypi/pyversions/auto-website-visitor?style=flat-square&color=blue&logo=python&logoColor=white)
+![GitHub Issues](https://img.shields.io/github/issues/nayandas69/auto-website-visitor?style=flat-square&color=red&logo=github&logoColor=white)
 ![Discussions](https://img.shields.io/github/discussions/nayandas69/auto-website-visitor?style=flat-square&color=cyan&logo=discourse&logoColor=white)
+![Workflow Status](https://img.shields.io/github/actions/workflow/status/nayandas69/auto-website-visitor/python-ci.yml?style=flat-square&color=4DB6AC&logo=github)
+![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)
+![PyPI Version](https://img.shields.io/pypi/v/auto-website-visitor?style=flat-square&color=00C853&logo=pypi)
+![Python Version](https://img.shields.io/pypi/pyversions/auto-website-visitor?style=flat-square&color=42A5F5&logo=python)
+![PyPI Downloads](https://static.pepy.tech/badge/auto-website-visitor/month?style=flat-square&color=5C6BC0)
+![Total Downloads](https://static.pepy.tech/badge/auto-website-visitor?style=flat-square&color=8E24AA)
 
 ## 🔥 Features
 
