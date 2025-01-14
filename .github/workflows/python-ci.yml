@@ -21,8 +21,13 @@ jobs:
         with:
           python-version: "3.9"
 
-      - name: Install build tools
-        run: python -m pip install --upgrade pip setuptools wheel twine requests
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools wheel twine requests
+
+      - name: Clean build artifacts
+        run: |
+          rm -rf dist/ build/ *.egg-info
 
       - name: Build the package
         run: |
@@ -30,20 +35,21 @@ jobs:
 
       - name: Check if version exists on PyPI
         id: check-version
+        env:
+          PACKAGE_NAME: "auto-website-visitor"
         run: |
-          PACKAGE_NAME="auto-website-visitor"
           VERSION=$(python setup.py --version)
-          STATUS_CODE=$(curl -o /dev/null -s -w "%{http_code}" https://pypi.org/project/$PACKAGE_NAME/$VERSION/)
-          if [ "$STATUS_CODE" -eq 200 ]; then
-            echo "The version $VERSION already exists on PyPI. Skipping upload."
-            echo "upload_required=false" >> $GITHUB_ENV
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" https://pypi.org/project/$PACKAGE_NAME/$VERSION/)
+          if [ "$RESPONSE" -eq 200 ]; then
+            echo "Version $VERSION already exists on PyPI."
+            echo "UPLOAD_REQUIRED=false" >> $GITHUB_ENV
           else
-            echo "Version $VERSION is not published on PyPI. Proceeding with upload."
-            echo "upload_required=true" >> $GITHUB_ENV
-          fi
+            echo "Version $VERSION does not exist on PyPI."
+            echo "UPLOAD_REQUIRED=true" >> $GITHUB_ENV
 
       - name: Publish to PyPI
-        if: env.upload_required == 'true'
+        if: env.UPLOAD_REQUIRED == 'true'
         env:
           TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
