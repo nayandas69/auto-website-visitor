@@ -8,6 +8,10 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read  # Allows the workflow to read repository contents
+  packages: write  # Required to publish packages to PyPI
+
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
