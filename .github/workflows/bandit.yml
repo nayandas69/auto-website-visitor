@@ -1,0 +1,50 @@
+# Bandit Security Scan Workflow
+# Scans the codebase for security vulnerabilities using Bandit.
+
+name: Bandit Security Scan
+
+on:
+  push:
+    branches: [ "main" ]  # Triggers on pushes to the main branch
+  pull_request:
+    branches: [ "main" ]  # Triggers on pull requests targeting the main branch
+  schedule:
+    - cron: '34 8 * * 1'  # Runs every Monday at 08:34 UTC
+
+permissions:
+  contents: read            # For fetching repository code
+  security-events: write    # For uploading SARIF results to GitHub Security tab
+
+jobs:
+  bandit:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the code from the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Python
+      - name: Set Up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'  # Match your project's Python version
+
+      # Step 3: Install Bandit
+      - name: Install Bandit
+        run: python -m pip install --upgrade bandit
+
+      # Step 4: Run Bandit Security Scan
+      - name: Run Bandit Security Scan
+        run: |
+          bandit -r . -f sarif -o bandit-results.sarif \
+                 --skip B101,B404,B605 \
+                 --exclude __pycache__,*.pyc,logs,dist,build,migrations
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Step 5: Upload SARIF Results to GitHub Security Tab
+      - name: Upload SARIF Results to GitHub
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: bandit-results.sarif
