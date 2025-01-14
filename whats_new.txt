@@ -1,0 +1,20 @@
+# 🚀 **What's New in Auto Website Visitor v0.0.2**  
+
+🌟 **New Features:**  
+- **Infinite Visits Mode:** Hit those websites endlessly with a slick new "unlimited visits" option. No limits, no problems! ♾️  
+- **Proxy Validation:** Enter your proxy like a pro! We check for valid formats so you're not out here debugging typos. 🔒  
+- **Custom Cache Directory:** Your drivers now have a cool hangout spot in `~/.browser_driver_cache`—less clutter, more style. 🗄️  
+
+🛠️ **Improvements:**  
+- **Auto-Reconnect on Internet Drops:** Got bad Wi-Fi? No stress—we've got a retry loop waiting to reconnect when you’re back online. 🔄⚡  
+- **Logs Glow-Up:** Cleaner logs and fancy console output so you’re always in the know about what's popping in the background. 📝✨  
+- **Better CLI UX:** Minimum intervals enforced (5 seconds), tighter validation, and crisp feedback keep everything user-friendly. ✅  
+
+🐛 **Fixes:**  
+- Squashed the bug where intervals could be *too short*—keeping it chill with a solid minimum now. 🚫⏱️  
+- **Proxy Setup for Firefox:** Fixed flaky configs—it's a seamless setup now! 🦊🔗  
+- Cleared out weird edge case crashes when launching headless in certain scenarios. 😌🔧  
+
+---
+
+**Ready to level up your automation game?** 💥 Head over to the main menu and give it a whirl. Your vibe is set to power user now! 🙌
