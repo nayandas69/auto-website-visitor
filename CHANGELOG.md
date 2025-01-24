@@ -4,6 +4,30 @@
 
 ---
 
+## **[0.0.4]** – *2025-01-24*
+
+## 🆕 **What’s New in 0.0.4?**
+
+### 🔧 **Fixes That Hit Different**:
+- **Proxy Validation Revamp**: Entering proxies just got hella smoother—no more stressing over sus input errors. Proxy checks are now your ride-or-die. 🛡️
+- **Retry System on Point**: No Wi-Fi? No problem. The retry feature now vibes calmly, reconnecting like a boss without breaking a sweat. 🔄
+- **Headless Mode Polished**: Ghosting with headless browsing is now silky smooth—no browser pop-ups, no surprises. 🐱‍👤
+- **Driver Drama Gone**: Fixed those pesky browser driver installation hiccups. Setup is now fast and stress-free. 🚗💨
+
+### ⚡ **Performance Boosts**:
+- **Driver Handling Speedrun**: Browser drivers are now cached like pros, making startups snappier than your Wi-Fi speed test. 🏎️💨
+- **Optimized Visit Flow**: We cleaned up the loops, cut down the lag, and made everything feel ✨ chef’s kiss ✨.
+- **Logs Got a Glow-Up**: Receipts are now detailed AF—clearer logs mean you’ll never miss the action. 📜✨
+
+---
+
+## 🛠️ **Improvements Across the Board**:
+- Better **error handling** to keep the vibes smooth even if something sus happens. 🚨
+- Tweaked browser setup for maximum stability—no more driver crashes or weird bugs. 🛡️
+- CLI prompts are now intuitive and lit—less thinking, more automating. 🧠✨
+
+---
+
 ## **[0.0.3]** – *2025-01-21*
 
 ### 🚀 **What’s Poppin’?**  

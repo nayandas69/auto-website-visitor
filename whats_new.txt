@@ -1,34 +1,29 @@
-# 🔥 What's New in v0.0.3 🚀  
+# 🌟 What’s New in Auto Website Visitor v0.0.4? 🚀
 
-**Yoo fam!** This update is straight-up lit with upgrades, fixes, and glow-ups. Here’s the 411: 👇
-
----
-
-### ✨ **New Features** ✨  
-- 🗂️ **Logs Got an Upgrade**: All logs now vibe in the `logs/` folder. Organized chaos? Nah, just straight-up clean. 🧼📁  
-- 🕵️‍♂️ **Proxy Validation 2.0**: No more sus proxy errors. You get pro feedback, like a tech whisperer. 🧙‍♂️✨  
-- 🕶️ **Stealth Mode Flex**: Headless mode is slicker than ever. Browse like a ghost, undetected. 👻💻  
-- 🌐 **Retry on Retry**: Lost internet? Don’t sweat it—auto-retry got your back like a homie. 💪🔄  
-- 🛠️ **CLI Glow-Up**: Clearer prompts, better feedback, and all-around *chef’s kiss* UI. 😘👌  
+Yo fam, **v0.0.4** just dropped and it’s PACKED with all the updates you didn’t know you needed. Let’s get into it. 👇
 
 ---
 
-### 🐛 **Bugs We Absolutely Crushed** 🐞  
-- 🚫 **Log File Drama**: No more missing logs or folder fails. Logs create themselves now. Big win. 🏆  
-- 🌍 **Proxy Who?**: Proxy setup won’t ghost you anymore. Validates perfectly, every time. 🔒🌐  
-- 🔧 **Driver Mess? Not Anymore**: Simplified Chrome & Firefox driver configs to stop mid-task drama. 🛑  
-- 🛠️ **Retry Resilience**: Connection dropped? Chill, we fixed that up with smooth retries. 🎢  
+## 🔧 Fixes That Slap:
+- **Proxy Validation**: No more sus inputs—our proxy checker is now airtight. 🛡️
+- **Retry Magic**: Lost Wi-Fi? Chill. Auto-retries got your back. 🔄
+- **Headless Mode Polished**: Browsing like a ninja is now smoother than ever. 🐱‍👤
+- **Driver Drama Squashed**: Browser drivers now install faster and with less drama. 🚗💨
 
 ---
 
-### 🌈 **General Glow-Ups** 🌈  
-- Code = Cleaner, smarter, faster. Like a pro athlete version of your fav tool. 🏃‍♂️💨  
-- Prompts = Friendly, helpful, and basically your CLI BFF. 🫶✨  
-- Logs = So detailed, they’re basically receipts for your automation flex. 🧾📊  
+## ⚡ Performance Upgrades:
+- **Driver Caching**: Startup times are now faster than your morning coffee kick. 🏎️
+- **Optimized Loops**: Visit flow is cleaner, tighter, and just... better. 💯
+- **Logs That Slay**: Logs are aesthetic, clear, and ready to spill the tea. 📜✨
 
 ---
 
-### ✌️ **In Short:**  
-This version is a **major vibe check pass**. Faster, cleaner, and more reliable. What else do you need? 💯  
+## 🧠 Pro Tips:
+1. Keep it ethical. Test your own sites and vibe responsibly. 🌈
+2. Use proxies to stay lowkey but don’t go wild. 😎
+3. Logs are your BFF—check ‘em for all the deets. 🧾
 
 ---
+
+That’s the rundown on **v0.0.4**, fam. Download now, update, and flex the glow-up. 💻✨

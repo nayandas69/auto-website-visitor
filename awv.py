@@ -1,7 +1,6 @@
 import os
 import time
 import logging
-import threading
 import requests
 from colorama import Fore, Style, init
 from selenium import webdriver
@@ -13,19 +12,19 @@ from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 import sys
 
-# Initialize colorama
+# Initialize colorama (cuz we love colors, duh 🌈)
 init(autoreset=True)
 
-# Constants
+# Constants (AKA the VIPs of this script)
 REPO_URL = "https://github.com/nayandas69/auto-website-visitor"
 LATEST_RELEASE_API = "https://api.github.com/repos/nayandas69/auto-website-visitor/releases/latest"
-CURRENT_VERSION = "0.0.3"
-CACHE_DIR = os.path.expanduser("~/.browser_driver_cache")
-MIN_INTERVAL_SECONDS = 5
-LOG_DIR = "logs"
+CURRENT_VERSION = "0.0.4"
+CACHE_DIR = os.path.expanduser("~/.browser_driver_cache")  # Browser driver cache for quicker setups
+MIN_INTERVAL_SECONDS = 5  # Minimum interval to keep it lowkey, ya know 😎
+LOG_DIR = "logs"  # Logs folder so we don’t lose receipts
 LOG_FILE = os.path.join(LOG_DIR, "visit_log.log")
 
-# Author Information
+# Author Info (cuz credit is due, always)
 AUTHOR_INFO = f"""
 {Fore.CYAN}Author: {Fore.GREEN}Nayan Das
 {Fore.CYAN}Version: {Fore.GREEN}{CURRENT_VERSION}
@@ -33,7 +32,7 @@ AUTHOR_INFO = f"""
 {Fore.CYAN}Email: {Fore.RED}nayanchandradas@hotmail.com
 """
 
-# Logging Configuration
+# Logging Config (keeping it professional AND cool)
 os.makedirs(LOG_DIR, exist_ok=True)
 logging.basicConfig(
     filename=LOG_FILE,
@@ -46,82 +45,74 @@ console_handler.setFormatter(logging.Formatter("%(asctime)s [%(levelname)s] %(me
 logging.getLogger("").addHandler(console_handler)
 
 def retry_on_disconnect(func):
-    """Decorator to retry a function if the internet is disconnected."""
+    """Decorator to handle bad Wi-Fi vibes (aka no internet moments) and retry."""
     def wrapper(*args, **kwargs):
         while True:
             try:
                 return func(*args, **kwargs)
             except requests.ConnectionError:
-                logging.warning("No internet connection detected. Retrying in 1 minute...")
+                logging.warning("Wi-Fi went poof. Retrying in 1 min...")
                 print(f"{Fore.RED}No internet. Retrying in 1 minute...")
                 time.sleep(60)
     return wrapper
 
 def validate_proxy(proxy):
-    """Validate the format of the proxy."""
+    """Proxy checker so you don’t enter sus URLs."""
     try:
         if not proxy.startswith(('http://', 'https://')):
             raise ValueError("Proxy must start with 'http://' or 'https://'!")
         protocol, address = proxy.split('://')
         host, port = address.split(':')
-        int(port)  # Ensure port is numeric
+        int(port)  # Just checking if port’s a number
         return True
     except (ValueError, AttributeError):
         return False
 
-def resource_path(relative_path):
-    """Get the absolute path to a resource, works for dev and PyInstaller."""
-    try:
-        base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
-    except Exception:
-        base_path = os.path.dirname(os.path.abspath(__file__))
-    return os.path.join(base_path, relative_path)
-
 def ensure_log_file():
-    """Ensure the log file exists."""
+    """Make sure the log file’s always ready to spill the tea."""
     if not os.path.exists(LOG_FILE):
         with open(LOG_FILE, 'w'):
             pass
 ensure_log_file()
 
 def get_user_input():
-    """Prompt user for all necessary details."""
+    """This is where the vibes start: grab user input for max customization."""
     website_url = input(f"{Fore.CYAN}Enter the website URL: {Fore.WHITE}")
     while not website_url.startswith("http"):
-        print(f"{Fore.RED}Invalid URL. Please enter a valid URL starting with http:// or https://.")
+        print(f"{Fore.RED}Invalid URL. Use something that starts with http:// or https://.")
         website_url = input(f"{Fore.CYAN}Enter the website URL: {Fore.WHITE}")
 
-    visit_count = input(f"{Fore.CYAN}Enter the number of visits (0 for unlimited): {Fore.WHITE}")
+    visit_count = input(f"{Fore.CYAN}Enter the number of visits (0 for infinite): {Fore.WHITE}")
     while not visit_count.isdigit():
-        print(f"{Fore.RED}Invalid input. Please enter a number.")
-        visit_count = input(f"{Fore.CYAN}Enter the number of visits (0 for unlimited): {Fore.WHITE}")
+        print(f"{Fore.RED}Numbers only, please!")
+        visit_count = input(f"{Fore.CYAN}Enter the number of visits (0 for infinite): {Fore.WHITE}")
     visit_count = int(visit_count)
 
-    visit_interval = input(f"{Fore.CYAN}Enter visit interval in seconds (minimum {MIN_INTERVAL_SECONDS}s): {Fore.WHITE}")
+    visit_interval = input(f"{Fore.CYAN}Enter visit interval in seconds (min {MIN_INTERVAL_SECONDS}s): {Fore.WHITE}")
     while not visit_interval.isdigit() or int(visit_interval) < MIN_INTERVAL_SECONDS:
-        print(f"{Fore.RED}Invalid interval. Must be at least {MIN_INTERVAL_SECONDS} seconds.")
-        visit_interval = input(f"{Fore.CYAN}Enter visit interval in seconds (minimum {MIN_INTERVAL_SECONDS}s): {Fore.WHITE}")
+        print(f"{Fore.RED}Keep it chill with at least {MIN_INTERVAL_SECONDS} seconds between visits.")
+        visit_interval = input(f"{Fore.CYAN}Enter visit interval in seconds (min {MIN_INTERVAL_SECONDS}s): {Fore.WHITE}")
     visit_interval = int(visit_interval)
 
-    browser = input(f"{Fore.CYAN}Choose browser (chrome/firefox): {Fore.WHITE}").lower()
+    browser = input(f"{Fore.CYAN}Choose your browser (chrome/firefox): {Fore.WHITE}").lower()
     while browser not in ["chrome", "firefox"]:
-        print(f"{Fore.RED}Invalid choice. Select 'chrome' or 'firefox'.")
-        browser = input(f"{Fore.CYAN}Choose browser (chrome/firefox): {Fore.WHITE}").lower()
+        print(f"{Fore.RED}Pick a squad: 'chrome' or 'firefox'.")
+        browser = input(f"{Fore.CYAN}Choose your browser (chrome/firefox): {Fore.WHITE}").lower()
 
-    headless = input(f"{Fore.CYAN}Run in headless mode? (y/n): {Fore.WHITE}").strip().lower() == 'y'
+    headless = input(f"{Fore.CYAN}Run it in headless mode? (y/n): {Fore.WHITE}").strip().lower() == 'y'
 
-    use_proxy = input(f"{Fore.CYAN}Do you want to use a proxy? (y/n): {Fore.WHITE}").strip().lower() == 'y'
+    use_proxy = input(f"{Fore.CYAN}Want to use a proxy? (y/n): {Fore.WHITE}").strip().lower() == 'y'
     proxy = None
     if use_proxy:
         proxy = input(f"{Fore.CYAN}Enter proxy URL (e.g., http://host:port): {Fore.WHITE}")
         while not validate_proxy(proxy):
-            print(f"{Fore.RED}Invalid proxy format. Use http://host:port.")
+            print(f"{Fore.RED}Nah fam, that’s not it. Try again.")
             proxy = input(f"{Fore.CYAN}Enter proxy URL (e.g., http://host:port): {Fore.WHITE}")
 
     return website_url, visit_count, visit_interval, browser, headless, proxy
 
 def create_driver(browser, headless, proxy=None):
-    """Create a web driver instance based on user inputs."""
+    """Driver setup (cuz every mission needs a good ride)."""
     os.environ['WDM_CACHE'] = CACHE_DIR
     if browser == "chrome":
         options = ChromeOptions()
@@ -141,21 +132,21 @@ def create_driver(browser, headless, proxy=None):
             options.set_preference("network.proxy.http", host)
             options.set_preference("network.proxy.http_port", int(port))
         return webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=options)
-    raise ValueError("Unsupported browser.")
+    raise ValueError("Unsupported browser. Pick chrome or firefox.")
 
 def visit_website(driver, url, visit_number):
-    """Perform a visit to the website."""
+    """Pull up to the URL and do the deed."""
     try:
-        logging.info(f"Visit {visit_number}: Navigating to {url}.")
+        logging.info(f"Visit {visit_number}: Hitting up {url}.")
         driver.get(url)
-        logging.info(f"Visit {visit_number}: Success.")
+        logging.info(f"Visit {visit_number}: All good in the hood.")
         print(f"{Fore.GREEN}Visit {visit_number}: Successfully visited {url}.")
     except Exception as e:
-        logging.error(f"Visit {visit_number} failed: {e}")
-        print(f"{Fore.RED}Visit {visit_number} failed: {e}")
+        logging.error(f"Visit {visit_number} flopped: {e}")
+        print(f"{Fore.RED}Visit {visit_number} flopped: {e}")
 
 def visit_task(url, visit_count, interval, browser, headless, proxy):
-    """Execute the website visits based on user input."""
+    """Run the actual mission (aka visiting the website)."""
     driver = create_driver(browser, headless, proxy)
     try:
         visit_number = 1
@@ -164,15 +155,15 @@ def visit_task(url, visit_count, interval, browser, headless, proxy):
             visit_number += 1
             if visit_count and visit_number > visit_count:
                 break
-            print(f"{Fore.YELLOW}Waiting {interval}s before next visit...")
+            print(f"{Fore.YELLOW}Taking a {interval}s power nap before the next run...")
             time.sleep(interval)
-        print(f"{Fore.GREEN}All visits completed successfully.")
+        print(f"{Fore.GREEN}Mission accomplished. All visits done!")
     finally:
         driver.quit()
 
 @retry_on_disconnect
 def check_for_update():
-    """Check the repository for updates."""
+    """Check GitHub for updates cuz FOMO is real."""
     print(f"{Fore.CYAN}Checking for updates...")
     try:
         response = requests.get(LATEST_RELEASE_API)
@@ -184,40 +175,39 @@ def check_for_update():
         print(f"{Fore.GREEN}Current Version: {CURRENT_VERSION}")
         if latest_version != CURRENT_VERSION:
             print(f"{Fore.YELLOW}New Version Available: {latest_version}")
-            print(f"{Fore.BLUE}What's New:\n{Style.BRIGHT}{whats_new}")
+            print(f"{Fore.BLUE}What’s New:\n{Style.BRIGHT}{whats_new}")
         else:
-            print(f"{Fore.GREEN}You have the latest version.")
+            print(f"{Fore.GREEN}You’re already on the latest and greatest.")
     except requests.RequestException as e:
         logging.error(f"Update check failed: {e}")
         print(f"{Fore.RED}Could not check for updates: {e}")
 
 def show_help():
-    """Display help information about the app."""
-    print(f"{Fore.YELLOW}How to use Auto Website Visitor:")
-    print("1. Start - Automates website visits based on user inputs.")
-    print("2. Check Update - Ensures you have the latest version.")
-    print("3. Help - Displays usage instructions.")
-    print("4. Exit - Closes the application.")
-    print("Logs are stored for reference.")
-    print("For suggestions, contact the author!")
+    """Help menu: the chill tour of what’s poppin’."""
+    print(f"{Fore.YELLOW}Here’s how to slay with Auto Website Visitor:")
+    print("1. Start - Automates website visits based on your vibes.")
+    print("2. Check Update - Stay updated, stay relevant.")
+    print("3. Help - Find out how to flex this tool.")
+    print("4. Exit - Peace out.")
+    print("Logs? Oh, they’re safe in the logs folder for ya.")
 
 def exit_app():
-    """Exit the program with a goodbye message."""
-    print(f"{Fore.YELLOW}Thank you for using Auto Website Visitor!\nGoodbye!")
+    """Wave goodbye with style."""
+    print(f"{Fore.YELLOW}Thanks for vibing with Auto Website Visitor! Catch you later! ")
     sys.exit(0)
 
 def start():
-    """Gather input and start the visit task."""
+    """Start the whole deal: grab input, do the magic."""
     url, count, interval, browser, headless, proxy = get_user_input()
-    confirm = input(f"{Fore.YELLOW}Confirm to start? (y/n): {Fore.WHITE}").lower()
+    confirm = input(f"{Fore.YELLOW}Ready to roll? (y/n): {Fore.WHITE}").lower()
     if confirm == 'y':
-        print(f"{Fore.GREEN}Starting...")
+        print(f"{Fore.GREEN}Here we gooooo!")
         visit_task(url, count, interval, browser, headless, proxy)
     else:
-        print(f"{Fore.RED}Aborted.")
+        print(f"{Fore.RED}Aight, maybe next time.")
 
 def main():
-    """Main CLI entry point."""
+    """CLI menu, the HQ of this whole thing."""
     while True:
         print(AUTHOR_INFO)
         print(f"{Fore.CYAN}Options:\n1. Start\n2. Check for Updates\n3. Help\n4. Exit")
@@ -231,7 +221,7 @@ def main():
         elif choice == '4':
             exit_app()
         else:
-            print(f"{Fore.RED}Invalid choice.")
+            print(f"{Fore.RED}Not a valid choice. Try again, champ.")
 
 if __name__ == "__main__":
     main()

@@ -1,51 +1,51 @@
 from setuptools import setup, find_packages
 
-# Read the README.md for a long description
+# Yo fam, this script sets up the 🔥 "Auto Website Visitor" project.
+# It’s like the VIP pass to package this tool and make it pip-ready. 🚀
+
+# Reading README.md for the long description cuz we love giving all the deets. 📝
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
     name="auto-website-visitor",
-    version="0.0.3",
-    author="Nayan Das",
-    author_email="nayanchandradas@hotmail.com",
+    version="0.0.4",
+    author="Nayan Das",  # Shoutout to the legend who made this. 🙌
+    author_email="nayanchandradas@hotmail.com",  # Slide into my inbox (for legit stuff, obvi). 📧
     description=("A CLI tool to automate website traffic using Selenium. ☠️"),
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/nayandas69/auto-website-visitor",
-    project_urls={
+    url="https://github.com/nayandas69/auto-website-visitor",  # HQ of this awesome project. 🌐
+    project_urls={  # Extra sauce: linking the docs, bugs, and source.
         "Bug Tracker": "https://github.com/nayandas69/auto-website-visitor/issues",
         "Documentation": "https://github.com/nayandas69/auto-website-visitor#readme",
         "Source Code": "https://github.com/nayandas69/auto-website-visitor",
     },
-    classifiers=[
+    classifiers=[  # Just flexing some official labels for PyPI. 💻
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    keywords=[
+    keywords=[  # Some spicy tags so people can find this masterpiece. 🌶️
         "auto website visitor", "website visitor", "automation", "selenium",
         "selenium python", "cli tool", "website traffic", "website automation",
+        "auto visits", "traffic generator", "auto bot"
     ],
-    packages=find_packages(include=["*"], exclude=["tests*", "docs*"]),  # Automatically finds packages in the root
-    py_modules=["main"],             # Single file module
-    python_requires=">=3.6",         # Python version requirement
+    packages=find_packages(include=["auto_website_visitor*"], exclude=["tests*", "docs*"]),  # Includes expanded package paths. 🎒
+    py_modules=["awv"],  # Branding matters. 💎
+    python_requires=">=3.6",
     install_requires=[
         "selenium>=4.0.0",
         "colorama>=0.4.4",
         "webdriver-manager>=3.8.0",
         "requests>=2.25.1",
     ],
-    entry_points={
+    entry_points={  # CLI magic happens here. 🪄
         "console_scripts": [
-            "auto-website-visitor=main:main",  # Command to run the script
+            "auto-website-visitor=awv:main",  # Command to run the tool straight from the terminal. 🔥
         ],
     },
     include_package_data=True,
     zip_safe=False,
     license="MIT",
 )
-# The setup() function is the core of the setup.py script. It takes a lot of arguments, but most of them are optional.
-# Here's a breakdown of the arguments used in this script:
-# name: The name of the package. This is what users will use to install the package using pip.
-# version: The version of the package. This is used by pip to check for updates and dependencies.

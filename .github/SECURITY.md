@@ -9,11 +9,12 @@ Hey there, awesome devs! 👋 We’re super hyped that you’re vibing with **Au
 We only drop security updates for the **latest version** of the project.  
 If you’re chillin’ with an old version, it’s time to glow up! ⬆️✨  
 
-| **Version** 🛠️ | **Status** 🚦 |  
-|----------------|----------------|  
-| **0.0.3** 🚀 | ✅ **Yass! Fully Supported.** This one’s 🔥 and built to slay. 💅 |  
-| **0.0.2** 🤔 | ⚠️ **Kinda Supported.** But let’s be real—it’s time to glow up. ✨ |  
-| **0.0.1** 💤 | ❌ **Nah, too old-school.** Upgrade now or miss the vibe check. 🚫 |  
+| **Version** 🛠️ | **Status** 🚦 |
+|----------------|----------------|
+| **0.0.4** 🔥 | ✅ **Fully Supported.** The latest and greatest—this one’s dripping with security and cool vibes. 🛡️✨ |
+| **0.0.3** 🚀 | ❌ **Unsupported.** We’ve moved on—don’t get caught slippin’. Upgrade now! 🚫 |
+| **0.0.2** 🤔 | ❌ **Unsupported.** Old and crusty. Don’t even think about it. 😤 |
+| **0.0.1** 💤 | ❌ **Unsupported.** Too ancient for this world. Glow up to the latest. 🚫 |
 
 ---  
 
