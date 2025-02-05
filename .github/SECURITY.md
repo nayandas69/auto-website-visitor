@@ -9,14 +9,19 @@ Hey there, awesome devs! 👋 We’re super hyped that you’re vibing with **Au
 We only drop security updates for the **latest version** of the project.  
 If you’re chillin’ with an old version, it’s time to glow up! ⬆️✨  
 
-| **Version** 🛠️ | **Status** 🚦 |
-|----------------|----------------|
-| **0.0.4** 🔥 | ✅ **Fully Supported.** The latest and greatest—this one’s dripping with security and cool vibes. 🛡️✨ |
-| **0.0.3** 🚀 | ❌ **Unsupported.** We’ve moved on—don’t get caught slippin’. Upgrade now! 🚫 |
-| **0.0.2** 🤔 | ❌ **Unsupported.** Old and crusty. Don’t even think about it. 😤 |
-| **0.0.1** 💤 | ❌ **Unsupported.** Too ancient for this world. Glow up to the latest. 🚫 |
+## 🔐 **Supported Versions**  
 
----  
+We only drop security updates for the **latest version**. If you’re still rockin’ an old one... **it’s time to upgrade, fam.** ⬆️💨  
+
+| **Version** 🛠️ | **Status** 🚦 |  
+|--------------|----------------|  
+| **0.0.5** 💀 | ✅ **Fully Supported.** This version is **secure AF**—no cap. 🛡️✨ |  
+| **0.0.4** 😣 | ❌ **Unsupported.** This version had its moment, but we’ve moved on. ⏩ |  
+| **0.0.3** 🤡 | ❌ **Unsupported.** Too old, too risky. Get with the times. ⌛ |  
+| **0.0.2** 😑 | ❌ **Unsupported.** If you’re still using this... just why? 😭 |  
+| **0.0.1** 💤 | ❌ **Unsupported.** This relic belongs in a museum. 🚫 |  
+
+**TL;DR:** If you ain’t on **v0.0.5**, you’re missing out. 🚀
 
 ## 🆘 **Found a Bug or Vulnerability?** 👀🐛  
 

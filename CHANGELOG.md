@@ -2,6 +2,24 @@
 
 > **Keep up with the glo-ups, bug fixes, and fresh vibes in every version!** 🔥  
 
+## **[0.0.5]** – *2025-02-05* 
+
+## 🚀 Auto Website Visitor v0.0.5 - The "Even More Stealth Mode" Update 🕵️‍♂️✨
+
+### 🚀 **New Features**  
+- **Auto-Scroll Mode**: Automatically scrolls down pages like a real human.  
+- **Configurable Visit Interval**: Users can now set their own time gaps (min. 30s).  
+- **Enhanced Proxy Handling**: Validates input before attempting to use proxies.  
+- **Better CLI Flow**: Added an *"edit"* option when confirming user inputs.  
+
+### 🛠 **Fixes & Optimizations**  
+- **Headless Mode Bugs Fixed** 🛠️  
+- **Faster WebDriver Handling** 🏎️  
+- **Improved Logging System** 📝  
+- **Stronger Connection Recovery** 🔄  
+
+This update = more **realistic, efficient, and user-friendly** automation. 🚀  
+
 ---
 
 ## **[0.0.4]** – *2025-01-24*

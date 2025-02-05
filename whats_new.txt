@@ -1,29 +1,17 @@
-# 🌟 What’s New in Auto Website Visitor v0.0.4? 🚀
+🔥 WHAT’S NEW IN v0.0.5 🔥
 
-Yo fam, **v0.0.4** just dropped and it’s PACKED with all the updates you didn’t know you needed. Let’s get into it. 👇
+🚀 Auto Website Visitor v0.0.5 - The "Even More Stealth Mode" Update 🕵️‍♂️✨
 
----
+🎉 **What's New in This Version?**
+- 🖱️ **Auto-Scroll Mode**: Now mimics human scrolling for stealthier browsing.
+- ⏳ **Configurable Visit Interval**: Set your own delay, min. 30s.
+- 🌍 **Better Proxy Support**: No more sus proxy inputs. 
+- 🎛️ **Editable Inputs**: Made a typo? No worries, you can edit before starting.
+- 🐛 **Headless Mode Fixes**: Works flawlessly now.
+- 🚗 **Optimized WebDriver Handling**: Faster setup, fewer crashes.
+- 🔁 **Improved Wi-Fi Disconnect Handling**: Reconnects smarter.
 
-## 🔧 Fixes That Slap:
-- **Proxy Validation**: No more sus inputs—our proxy checker is now airtight. 🛡️
-- **Retry Magic**: Lost Wi-Fi? Chill. Auto-retries got your back. 🔄
-- **Headless Mode Polished**: Browsing like a ninja is now smoother than ever. 🐱‍👤
-- **Driver Drama Squashed**: Browser drivers now install faster and with less drama. 🚗💨
+✨ **TL;DR?**  
+Your website visits now look more *real*, work *faster*, and fail *less*. 🔥
 
----
-
-## ⚡ Performance Upgrades:
-- **Driver Caching**: Startup times are now faster than your morning coffee kick. 🏎️
-- **Optimized Loops**: Visit flow is cleaner, tighter, and just... better. 💯
-- **Logs That Slay**: Logs are aesthetic, clear, and ready to spill the tea. 📜✨
-
----
-
-## 🧠 Pro Tips:
-1. Keep it ethical. Test your own sites and vibe responsibly. 🌈
-2. Use proxies to stay lowkey but don’t go wild. 😎
-3. Logs are your BFF—check ‘em for all the deets. 🧾
-
----
-
-That’s the rundown on **v0.0.4**, fam. Download now, update, and flex the glow-up. 💻✨
+🚀 **LEVEL UP YOUR AUTOMATION GAME. UPDATE NOW!** 🚀

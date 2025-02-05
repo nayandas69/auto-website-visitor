@@ -9,7 +9,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="auto-website-visitor",
-    version="0.0.4",
+    version="0.0.5",
     author="Nayan Das",  # Shoutout to the legend who made this. 🙌
     author_email="nayanchandradas@hotmail.com",  # Slide into my inbox (for legit stuff, obvi). 📧
     description=("A CLI tool to automate website traffic using Selenium. ☠️"),
