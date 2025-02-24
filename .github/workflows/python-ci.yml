@@ -1,0 +1,55 @@
+name: Python Package CI and Publish
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read  # Allows the workflow to read repository contents
+  packages: write  # Required to publish packages to PyPI
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+
+      - name: Install build tools
+        run: python -m pip install --upgrade pip setuptools wheel twine requests
+
+      - name: Build the package
+        run: |
+          python setup.py sdist bdist_wheel
+
+      - name: Check if version exists on PyPI
+        id: check-version
+        run: |
+          PACKAGE_NAME="auto-website-visitor"
+          VERSION=$(python setup.py --version)
+          STATUS_CODE=$(curl -o /dev/null -s -w "%{http_code}" https://pypi.org/project/$PACKAGE_NAME/$VERSION/)
+          if [ "$STATUS_CODE" -eq 200 ]; then
+            echo "The version $VERSION already exists on PyPI. Skipping upload."
+            echo "upload_required=false" >> $GITHUB_ENV
+          else
+            echo "Version $VERSION is not published on PyPI. Proceeding with upload."
+            echo "upload_required=true" >> $GITHUB_ENV
+          fi
+
+      - name: Publish to PyPI
+        if: env.upload_required == 'true'
+        env:
+          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        run: |
+          python -m twine upload dist/*
