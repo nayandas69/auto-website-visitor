@@ -4,8 +4,9 @@ updates:
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
-      interval: "time"
-      time: "2024-07-01T00:00:00Z" # First run on July 1, 2024
+      interval: "monthly"  # No direct 6-month option, but we can manually delay updates
+      day: "1"  # Runs on the 1st of every month
+      time: "00:00"  # Midnight UTC
     ignore:
       - dependency-name: "selenium"
         versions: ["<4.0.0"]
@@ -14,8 +15,9 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "time"
-      time: "2025-01-01T00:00:00Z" # Next run on Jan 1, 2025
+      interval: "monthly"  # Also set to monthly, but we can skip PRs if not needed
+      day: "1"
+      time: "00:00"
     ignore:
       - dependency-name: "actions/checkout"
         versions: ["<3.0.0"]
