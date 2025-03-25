@@ -1,16 +1,16 @@
 name: Python Package CI and Publish
 
 on:
+  workflow_dispatch:  # Allows manual trigger from GitHub Actions UI
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
+  schedule:
+    - cron: "0 0 1 1,7 *"  # Runs at midnight UTC on January 1st and July 1st
 
 permissions:
-  contents: read  # Allows the workflow to read repository contents
-  packages: write  # Required to publish packages to PyPI
+  contents: read
+  packages: write
 
 jobs:
   build-and-publish:

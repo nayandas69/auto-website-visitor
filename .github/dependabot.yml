@@ -4,17 +4,18 @@ updates:
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
-      interval: "weekly"             # Check for updates weekly (can be "daily", "weekly", or "monthly")
-      day: "sunday"                  # Specify the day updates are checked
+      interval: "time"
+      time: "2024-07-01T00:00:00Z" # First run on July 1, 2024
     ignore:
-      - dependency-name: "selenium"  # Ignore specific package updates
-        versions: ["<4.0.0"]         # Ignore versions below specified
+      - dependency-name: "selenium"
+        versions: ["<4.0.0"]
+
   # GitHub Actions updates
   - package-ecosystem: "github-actions"
-    directory: "/"                   # Check for updates in the root directory
+    directory: "/"
     schedule:
-      interval: "weekly"             # Check for updates weekly
-      day: "monday"                  # Day updates are checked (optional)
+      interval: "time"
+      time: "2025-01-01T00:00:00Z" # Next run on Jan 1, 2025
     ignore:
-      - dependency-name: "actions/checkout"  # Ignore specific Actions updates
-        versions: ["<3.0.0"]                 # Ignore versions below specified
+      - dependency-name: "actions/checkout"
+        versions: ["<3.0.0"]
