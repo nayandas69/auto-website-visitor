@@ -14,7 +14,7 @@ from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 
-# Initialize colorama (cuz we love colors, duh 🌈)
+# Initialize colorama (cuz we love colors, duh)
 init(autoreset=True)
 
 # Constants (AKA the VIPs of this script)
@@ -24,12 +24,12 @@ LATEST_RELEASE_API = (
 )
 CURRENT_VERSION = "0.0.6"
 CACHE_DIR = os.path.expanduser("~/.browser_driver_cache")
-MIN_INTERVAL_SECONDS = 30  # Default is 30s, but user/developers can increase ⏳
+MIN_INTERVAL_SECONDS = 30  # Default is 30s, but user/developers can increase
 LOG_DIR = "logs"  # Logs folder so we don’t lose receipts
 LOG_FILE = os.path.join(LOG_DIR, "visit_log.log")
-AUTHOR = "Nayan Das"  # 🙌 Shoutout to the legend who made this
-WEBSITE = "https://socialportal.nayanchandradas.com"  # Support the hustle by visiting the site 🚀
-EMAIL = "nayanchandradas@hotmail.com"  # 📧 Slide into my inbox (for legit stuff, obvi)
+AUTHOR = "Nayan Das"  # Shoutout to the legend who made this
+WEBSITE = "https://socialportal.nayanchandradas.com"  # Support the hustle by visiting the site
+EMAIL = "nayanchandradas@hotmail.com"  # Slide into my inbox (for legit stuff, obvi)
 
 # Author Info (cuz credit is due, always)
 AUTHOR_INFO = f"""
@@ -39,7 +39,7 @@ AUTHOR_INFO = f"""
 {Fore.CYAN}Email: {Fore.RED}{EMAIL}
 """
 
-# 📜 Logging Setup (Cuz debugging shouldn't feel like detective work)
+# Logging Setup (Cuz debugging shouldn't feel like detective work)
 os.makedirs(LOG_DIR, exist_ok=True)
 logging.basicConfig(
     filename=LOG_FILE,
@@ -54,7 +54,7 @@ console_handler.setFormatter(
 logging.getLogger("").addHandler(console_handler)
 
 
-# 🔁 Auto Retry for Disconnects (Cuz Wi-Fi be acting sus)
+# Auto Retry for Disconnects (Cuz Wi-Fi be acting sus)
 def retry_on_disconnect(func):
     """Decorator to handle bad Wi-Fi vibes (aka no internet moments) and retry after 1 min."""
 
@@ -70,7 +70,7 @@ def retry_on_disconnect(func):
     return wrapper
 
 
-# 🕵️ Proxy Validator (No sus proxies allowed)
+# Proxy Validator (No sus proxies allowed)
 def validate_proxy(proxy):
     """Ensures the proxy ain't sketchy."""
     try:
@@ -95,7 +95,7 @@ def ensure_log_file():
 ensure_log_file()
 
 
-# 🎮 User Input - Your Playground
+# User Input - Your Playground
 def get_user_input():
     """This is where the vibes start: grab user input for max customization."""
     website_url = input(f"{Fore.CYAN}Enter the website URL: {Fore.WHITE}")
@@ -174,7 +174,7 @@ def get_user_input():
     )
 
 
-# 🚀 WebDriver Setup (Chrome or Firefox)
+# WebDriver Setup (Chrome or Firefox)
 def create_driver(browser, headless, proxy=None):
     """Driver setup (cuz every mission needs a good ride)."""
     os.environ["WDM_CACHE"] = CACHE_DIR
@@ -203,7 +203,7 @@ def create_driver(browser, headless, proxy=None):
     raise ValueError("Unsupported browser. Pick chrome or firefox.")
 
 
-# 🤖 Auto Scroll - New & Improved
+# Auto Scroll - New & Improved
 def auto_human_scroll(driver):
     """Scrolls *all the way* down like a real human."""
     for _ in range(random.randint(5, 10)):
@@ -212,7 +212,7 @@ def auto_human_scroll(driver):
     logging.info("Scrolled all the way down.")
 
 
-# 🚀 Visit Website
+# Visit Website
 def visit_website(driver, url, visit_number, auto_scroll):
     """Visits the site & scrolls like a human if enabled."""
     try:
@@ -227,17 +227,17 @@ def visit_website(driver, url, visit_number, auto_scroll):
         print(f"{Fore.RED}Visit {visit_number} failed: {e}")
 
 
-# 🔁 Visit Task
+# Visit Task
 def visit_task(url, visit_count, interval, browser, headless, auto_scroll, proxy):
     """Runs the whole visit mission."""
     driver = create_driver(browser, headless, proxy)
     try:
         visit_number = 1
-        while visit_count == 0 or visit_number <= visit_count:  # ✅ Fix applied
+        while visit_count == 0 or visit_number <= visit_count:  # Fix applied
             visit_website(driver, url, visit_number, auto_scroll)
             print(f"{Fore.YELLOW}Waiting {interval}s before next visit... 💤")
             time.sleep(interval)
-            visit_number += 1  # ✅ Increment visit number manually
+            visit_number += 1  # Increment visit number manually
 
         print(f"{Fore.GREEN}Mission accomplished. All visits done!")
 
@@ -247,9 +247,9 @@ def visit_task(url, visit_count, interval, browser, headless, auto_scroll, proxy
         driver.quit()
 
 
-# Check for Updates (Cuz FOMO is real) 🚨
+# Check for Updates (Cuz FOMO is real)
 @retry_on_disconnect
-# 🆕 Check for Updates
+# Check for Updates
 def check_for_update():
     print(f"{Fore.GREEN}Current Version: {CURRENT_VERSION}")
     print(f"{Fore.CYAN}Checking for updates...")
@@ -268,7 +268,7 @@ def check_for_update():
         print(f"{Fore.RED}Could not check for updates.")
 
 
-# 📚 Help Menu (Cuz we all need a little guidance)
+# Help Menu (Cuz we all need a little guidance)
 def show_help():
     """Help menu: the chill tour of what’s poppin’."""
     print(f"{Fore.YELLOW}Here’s how to slay with Auto Website Visitor:")
@@ -282,7 +282,7 @@ def show_help():
     )
 
 
-# 🚪 Exit App (Cuz every good thing must come to an end)
+# Exit App (Cuz every good thing must come to an end)
 def exit_app():
     """Wave goodbye with style."""
     print(
@@ -291,7 +291,7 @@ def exit_app():
     sys.exit(0)
 
 
-# 🚀 Start
+# Start
 def start():
     """Handles user input and kicks off the script."""
     while True:
@@ -301,7 +301,7 @@ def start():
             print(f"{Fore.GREEN}Here we gooooo!")
             visit_task(
                 url, count, interval, browser, headless, auto_scroll, proxy
-            )  # ✅ Now passes proxy too
+            )  # Now passes proxy too
             break
         elif confirm == "edit":
             print(f"{Fore.YELLOW}No worries! Let's update your inputs.")
@@ -310,7 +310,7 @@ def start():
             break
 
 
-# CLI Menu (Cuz we love options) 🖥️
+# CLI Menu (Cuz we love options)
 def main():
     """CLI menu, the HQ of this whole thing."""
     print(Fore.CYAN + "Auto Website Visitor" + Fore.WHITE)
@@ -333,6 +333,6 @@ def main():
             print(f"{Fore.RED}Not a valid choice. Try again, champ.")
 
 
-# 🎬 Main Entry Point
+# Main Entry Point
 if __name__ == "__main__":
     main()
