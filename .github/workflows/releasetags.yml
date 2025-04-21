@@ -58,7 +58,7 @@ jobs:
         run: |
           pyinstaller awv.spec
           mkdir awv-linux
-          cp dist/downloader awv-linux/awv
+          cp dist/awv awv-linux/awv
           cp AUTHOR.rst LICENSE awv-linux/
           tar -czvf awv-linux.tar.gz -C awv-linux .
 
