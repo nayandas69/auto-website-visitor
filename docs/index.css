@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to right, #0d0d1a, #1a1a2e);
+    color: #f0f0f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.title {
+    font-size: 3rem;
+    color: #bf40bf;
+}
+
+.subheading {
+    font-size: 1.1rem;
+    color: #aaa;
+    margin: 10px 0;
+}
+
+.badges {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.badges img {
+    height: 22px;
+    border-radius: 4px;
+    box-shadow: 0 0 5px #bf40bf44;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn {
+    background: linear-gradient(45deg, #8e2de2, #4a00e0);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(45deg, #4a00e0, #8e2de2);
+}
+
+main section {
+    background: #1e1e2f;
+    padding: 20px;
+    margin: auto;
+    margin-bottom: 40px;
+    max-width: 900px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 6px rgba(255, 255, 255, 0.05);
+}
+
+section h2 {
+    color: #bf40bf;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+ul,
+ol {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+code {
+    background: #2a2a3b;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-family: monospace;
+    color: #f4f4f4;
+}
+
+a {
+    color: #80dfff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.support {
+    background: #1e1e2f;
+    padding: 20px;
+    margin: auto;
+    max-width: 900px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 6px rgba(255, 255, 255, 0.05);
+}
+
+.support h2 {
+    color: #bf40bf;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.support p {
+    margin-bottom: 10px;
+}
+
+.support a {
+    color: #80dfff;
+    text-decoration: none;
+}
+
+.support a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    margin-top: 60px;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+@media (max-width: 600px) {
+    .title {
+        font-size: 2.2rem;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    section {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .support {
+        padding: 15px;
+    }
+}
