@@ -69,7 +69,7 @@ jobs:
           name: "Release v${{ steps.get_version.outputs.version }}"
           body: |
           We changed some things in the code, so we decided to release a new version.
-          Please check the [CHANGELOG](ChangeLog.md) for more details.
+          Please check the [CHANGELOG](CHANGELOG.md) for more details.
           files: awv-linux.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -13,12 +13,6 @@ Perfect for testing, load simulation, SEO boosting, and more — all with a spri
 > [!WARNING]
 > This tool is for **educational and personal use only**. Do not use it for any malicious or unauthorized activity.
 
-## Supported Browsers
-
-- [x] Google Chrome  
-- [x] Mozilla Firefox  
-- [x] Microsoft Edge  
-
 ## Features
 
 - [x] **Headless mode** support (silent, no UI)  
@@ -53,6 +47,47 @@ Then run it from anywhere:
 auto-website-visitor
 ```
 
+### Browser Installation (Linux)
+
+> [!WARNING]
+> Make sure you have the latest version of your browser installed.
+> AWV uses Selenium to control the browser, so it needs the browser to be installed on your system.
+> If you have a different version of the browser, please check the [Selenium documentation](https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/) for compatibility.
+
+## Supported Browsers
+
+- [x] Google Chrome  
+- [x] Mozilla Firefox  
+- [x] Microsoft Edge  
+
+#### Google Chrome
+```bash
+sudo apt update
+sudo apt install wget -y
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome-stable_current_amd64.deb -y
+```
+
+#### Mozilla Firefox
+```bash
+sudo apt update
+sudo apt install firefox -y
+```
+
+#### Microsoft Edge
+```bash
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/
+sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge.list'
+sudo apt update
+sudo apt install microsoft-edge-stable -y
+```
+
+> [!TIP] 
+> You only need one browser installed to run the tool.
+> Edge is mostly recommended on Windows. 
+> For Linux, Chrome and Firefox work best.
+
 ## Prebuilt EXE & Linux Binary
 
 > [!WARNING]
@@ -60,7 +95,7 @@ auto-website-visitor
 
 ### For Windows
 
-- Download `awv.exe` from the release
+- Download `Auto.Website.Visitor.exe` from the release
 - Double click to launch
 - Follow on-screen prompts
 
@@ -117,10 +152,7 @@ Once you launch AWV, you’ll see:
 - [x] Smart pause simulation  
 - [x] Proxy rotation  
 - [x] Multi-browser support  
-- [x] Update checker  
-- [ ] GUI version with Tkinter  
-- [ ] Scheduler/cron integration  
-- [ ] Stats dashboard for visits  
+- [x] Update checker   
 - [ ] Customizable user-agent
 - [ ] More browser support (Safari, Opera, etc.)
 - [ ] More proxy types (SOCKS, etc.)
