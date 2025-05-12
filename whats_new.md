@@ -1,41 +1,39 @@
-# What's New in v0.0.7
+# What's New in v0.0.8
 
-Hey there, power users and automation lovers!  
-Here’s the latest scoop on what’s new, improved, and upgraded in **Auto Website Visitor v0.0.7**
+#### New Features & Improvements
 
-### Microsoft Edge Support  
-You asked, we delivered!  
-Now you can use **Microsoft Edge** alongside Chrome and Firefox. Pick your favorite browser and roll with it.
+**1. `.deb` Package Now Available**
+You can now install **Auto Website Visitor** on any **Debian-based Linux system** (Ubuntu, Kali, etc.) using our brand-new `.deb` package.
+This makes setup easier, faster, and more system-integrated for Linux users.
 
-```bash
-Choose your browser (chrome/firefox/edge): edge
-```
+> 🔗 Download the `.deb` package from the [latest release](https://github.com/nayandas69/auto-website-visitor/releases/latest).
 
-### Smarter Auto-Scroll (Human-like)  
-We’ve completely **revamped `auto_human_scroll()`** to simulate real user behavior.  
-It now includes:
-- Scrolling **down and up**
-- Random **pauses to read**
-- Targeted scrolling to elements like `<p>` tags
-- More **natural behavior** that mimics actual browsing sessions  
-
-> [!WARNING]
-> **Auto-scroll now requires a minimum interval of 10 seconds**. If selected with a shorter interval, it will be automatically disabled with a warning.
-
----
-
-### Dynamic Visit Timer Feedback  
-Instead of silently waiting, the program now tells you exactly how long it will pause:
+To install it:
 
 ```bash
-Waiting 7s before next visit... 💤
+sudo dpkg -i auto-website-visitor_<version>_amd64.deb
+```
+> Replace `<version>` with the actual version number of the downloaded package.
+> This also adds the `awv` command globally on your system.
+
+**2. New CLI Command: `awv` for PIP Users**
+
+For users who install the tool via `pip`, we've added a simpler and shorter command:
+
+```bash
+awv
+```
+you can run  two commands when you install via `pip`.
+
+So whether you're using `pip install auto-website-visitor`, you can now run:
+
+```bash
+awv --help
 ```
 
-This gives you a clear, real-time indicator of the visit pacing.
+**Update Now**
+Run the following to upgrade via pip:
 
----
-
-## Improved UX & Input Handling
-
-- **Smart input parsing** for `yes/no` answers like auto-scroll.
-- **Minimum visit interval enforcement** ensures functionality works correctly.
+```bash
+pip install --upgrade auto-website-visitor
+```

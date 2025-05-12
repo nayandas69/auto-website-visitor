@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'awv.py'
+      - 'awv/awv.py'
     branches:
       - main
 
@@ -26,10 +26,10 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Extract version from setup.py
+      - name: Extract version from pyproject.toml
         id: get_version
         run: |
-          VERSION=$(python setup.py --version)
+          VERSION=$(python -c "import re; f=open('pyproject.toml').read(); print(re.search(r'version\s*=\s*[\"\\'](.+?)[\"\\']', f).group(1))")
           echo "Project version: $VERSION"
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
@@ -37,7 +37,6 @@ jobs:
         id: tag_check
         run: |
           if git rev-parse "${{ steps.get_version.outputs.version }}" >/dev/null 2>&1; then
-            echo "Tag already exists. Skipping."
             echo "tag_exists=true" >> $GITHUB_OUTPUT
           else
             echo "tag_exists=false" >> $GITHUB_OUTPUT
@@ -46,15 +45,17 @@ jobs:
       - name: Create Git tag
         if: steps.tag_check.outputs.tag_exists == 'false'
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git tag -a "${{ steps.get_version.outputs.version }}" -m "Release v${{ steps.get_version.outputs.version }}"
           git push origin "${{ steps.get_version.outputs.version }}"
 
       - name: Install dependencies and PyInstaller
-        run: pip install --upgrade pip && pip install -r requirements.txt pyinstaller
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt pyinstaller
 
-      - name: Build Linux binary with PyInstaller spec
+      - name: Build Linux binary with PyInstaller
         run: |
           pyinstaller awv.spec
           mkdir awv-linux
@@ -62,16 +63,36 @@ jobs:
           cp AUTHOR.rst LICENSE awv-linux/
           tar -czvf awv-linux.tar.gz -C awv-linux .
 
+      - name: Create .deb package
+        run: |
+          mkdir -p awv-deb/usr/local/bin
+          mkdir -p awv-deb/DEBIAN
+          cp dist/awv awv-deb/usr/local/bin/awv
+
+          VERSION="${{ steps.get_version.outputs.version }}"
+          echo "Package: auto-website-visitor" > awv-deb/DEBIAN/control
+          echo "Version: $VERSION" >> awv-deb/DEBIAN/control
+          echo "Section: utils" >> awv-deb/DEBIAN/control
+          echo "Priority: optional" >> awv-deb/DEBIAN/control
+          echo "Architecture: amd64" >> awv-deb/DEBIAN/control
+          echo "Depends: python3" >> awv-deb/DEBIAN/control
+          echo "Maintainer: nayandas69" >> awv-deb/DEBIAN/control
+          echo "Description: Auto Website Visitor - automate browser visits to websites." >> awv-deb/DEBIAN/control
+
+          dpkg-deb --build awv-deb
+          mv awv-deb.deb awv-linux/auto-website-visitor_${VERSION}_amd64.deb
+
       - name: Upload Linux release asset
         uses: softprops/action-gh-release@v2
         with:
           tag_name: "${{ steps.get_version.outputs.version }}"
           name: "Release v${{ steps.get_version.outputs.version }}"
           body: |
-            We changed some things in the code, so we decided to release a new version.
-            Please check the [CHANGELOG](CHANGELOG.md) for more details.
-          files: awv-linux.tar.gz
-
+            New features and improvements are included in this version. Download assets below.
+            [CHANGELOG](CHANGELOG.md)
+          files: |
+            awv-linux.tar.gz
+            awv-linux/auto-website-visitor_${{ steps.get_version.outputs.version }}_amd64.deb
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -89,18 +110,17 @@ jobs:
           python-version: '3.10'
 
       - name: Install dependencies and PyInstaller
-        run: pip install --upgrade pip && pip install -r requirements.txt pyinstaller
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt pyinstaller
 
       - name: Build Windows EXE using PyInstaller spec
         run: pyinstaller awv.spec
-
-      - name: Rename Windows executable
-        run: Rename-Item -Path "dist/awv.exe" -NewName "Auto Website Visitor.exe"
 
       - name: Upload Windows release asset
         uses: softprops/action-gh-release@v2
         with:
           tag_name: "${{ needs.linux-build.outputs.version }}"
-          files: dist/Auto Website Visitor.exe
+          files: dist/awv.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

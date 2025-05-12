@@ -88,14 +88,14 @@ sudo apt install microsoft-edge-stable -y
 > Edge is mostly recommended on Windows. 
 > For Linux, Chrome and Firefox work best.
 
-## Prebuilt EXE & Linux Binary
+## EXE, Linux Binary & .deb package
 
 > [!WARNING]
-> Check the **latest release assets** section to download the ready-to-use prebuilt files.
+> Check the **latest release assets** section to download the ready-to-use files.
 
 ### For Windows
 
-- Download `Auto.Website.Visitor.exe` from the release
+- Download `awv.exe` from the release
 - Double click to launch
 - Follow on-screen prompts
 
@@ -107,9 +107,17 @@ sudo chmod +x awv
 ./awv
 ```
 
+### For Debain-based Linux
+
+```bash
+sudo dpkg -i auto-website-visitor_<version>_amd64.deb
+```
+> Replace `<version>` with the actual version number of the downloaded package.
+> This also adds the `awv` command globally on your system.
+
 ## Visit Our AWV Web Portal
 
-Check it out here:  
+Check it out here only for latest updates version:  
 [Click](https://nayandas69.github.io/auto-website-visitor)
 
 > [!TIP]

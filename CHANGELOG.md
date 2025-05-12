@@ -4,6 +4,30 @@
 
 ---
 
+## **[0.0.8]** – *2025-05-12*
+
+### New Features & Improvements
+
+- **`.deb` Package Released**  
+  A `.deb` package is now available for Debian-based Linux systems (Ubuntu, Kali, etc.), providing a smoother and more integrated installation experience.  
+  🔗 [Download the latest release](https://github.com/nayandas69/auto-website-visitor/releases/latest)
+
+  ```bash
+  sudo dpkg -i auto-website-visitor_<version>_amd64.deb
+  ```
+
+* **New CLI Command: `awv` (for pip users)**
+  Users installing the package via `pip` can now use the shorter `awv` command in addition to the full `auto-website-visitor`:
+
+  ```bash
+  awv --help
+  ```
+
+* **Improved Command Support**
+  Both `auto-website-visitor` and `awv` commands are now interchangeable for CLI usage.
+
+---
+
 ## **[0.0.7]** – *2025-04-21*
 
 ### **New Browser Support**

@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['awv.py'],
+    ['awv/awv.py'],
     pathex=[],
     binaries=[],
     datas=[],

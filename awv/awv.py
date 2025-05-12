@@ -1,6 +1,9 @@
+#!/usr/bin/env python3
+# awv.py
+
 # -------------------------------------
 # Auto Website Visitor
-# Version: 0.0.7
+# Version: 0.0.8
 # Author: nayandas69
 # Website: https://nayandas69.github.io/link-in-bio
 # Email: nayanchandradas@hotmail.com
@@ -8,7 +11,7 @@
 # This script allows users to specify a website URL, the number of visits, the interval between visits,
 # and the browser to use. It also supports headless mode, proxy usage, and auto-scrolling.
 # License: MIT License
-# Last Updated: 2025-04-21
+# Last Updated: 2025-5-12
 # -------------------------------------
 
 
@@ -41,7 +44,7 @@ REPO_URL = "https://github.com/nayandas69/auto-website-visitor"
 LATEST_RELEASE_API = (
     "https://api.github.com/repos/nayandas69/auto-website-visitor/releases/latest"
 )
-CURRENT_VERSION = "0.0.7"
+CURRENT_VERSION = "0.0.8"
 CACHE_DIR = os.path.expanduser("~/.browser_driver_cache")
 MIN_INTERVAL_SECONDS = 1
 LOG_DIR = "logs"

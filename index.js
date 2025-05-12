@@ -50,7 +50,7 @@ function markRecommendedButton() {
 
         if (
             (os === "windows" && link.endsWith(".exe")) ||
-            (os === "linux" && link.endsWith(".tar.gz"))
+            (os === "linux" && link.endsWith(".deb"))
         ) {
             const badge = `<span style="margin-left: 8px; background: #bf40bf; color: #fff; padding: 3px 6px; border-radius: 5px; font-size: 0.75rem;">Recommended</span>`;
             button.innerHTML += badge;

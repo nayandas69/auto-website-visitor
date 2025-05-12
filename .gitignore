@@ -1,22 +1,13 @@
-# Python bytecode files
-*.pyc
-*.pyo
-*.pyd
+# Python cache and virtualenv
 __pycache__/
-
-# Virtual environment directories
+*.py[cod]
+*.egg-info/
 .venv/
 
-# Windows system files
-Thumbs.db
-
-# Logs
-*.log
-
-# Distribution / packaging
-*.egg
-*.egg-info/
-dist/
+# Build artifacts
 build/
+dist/
+*.egg
+*.whl
 *.tar.gz
-*.zip
+*.deb
