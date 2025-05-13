@@ -4,8 +4,13 @@ function handleDownload(button) {
     button.classList.add("counting-down");
 
     const link = button.getAttribute("data-link");
-    if (!link) {
-        alert("Download link not available!");
+    try {
+        const url = new URL(link, window.location.origin); // Validate and parse the URL
+        if (url.protocol !== "http:" && url.protocol !== "https:") {
+           throw new Error("Invalid protocol");
+        }
+    } catch (e) {
+        alert("Invalid download link!");
         button.classList.remove("counting-down");
         return;
     }
@@ -23,7 +28,7 @@ function handleDownload(button) {
             clearInterval(timer);
             button.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Preparing...`;
             setTimeout(() => {
-                window.location.href = link;
+                window.location.href = link; // Safe to use after validation
                 button.innerHTML = originalHTML;
                 button.disabled = false;
                 button.classList.remove("counting-down");
