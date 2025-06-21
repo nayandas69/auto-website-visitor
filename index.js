@@ -28,7 +28,8 @@ function handleDownload(button) {
             clearInterval(timer);
             button.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Preparing...`;
             setTimeout(() => {
-                window.location.href = link; // Safe to use after validation
+                const sanitizedLink = encodeURI(link); // Sanitize the URL
+                window.location.href = sanitizedLink; // Safe to use after sanitization
                 button.innerHTML = originalHTML;
                 button.disabled = false;
                 button.classList.remove("counting-down");
