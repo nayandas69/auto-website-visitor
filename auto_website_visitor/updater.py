@@ -14,7 +14,7 @@ from .logger import VisitorLogger
 class AutoUpdater:
     """Handles automatic updates for the package."""
     
-    def __init__(self, logger: VisitorLogger, current_version: str = "0.0.10"):
+    def __init__(self, logger: VisitorLogger, current_version: str = "2025.01.07"):
         """Initialize auto updater.
         
         Args:

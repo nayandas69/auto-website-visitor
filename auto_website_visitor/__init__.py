@@ -2,7 +2,7 @@
 
 """Auto Website Visitor - Automated website visiting with advanced features."""
 
-__version__ = "0.0.10"
+__version__ = "2025.01.07"
 __author__ = "nayandas69"
 __email__ = "nayanchandradas@hotmail.com"
 
