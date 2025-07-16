@@ -1,0 +1,41 @@
+# Auto Website Visitor Configuration Template
+# Version: 3.0.0
+# This template provides all available configuration options
+
+# Core settings
+url: https://example.com
+visit_count: 5
+interval: 10  # seconds between visits
+timeout: 30   # page load timeout
+
+# Browser options
+browser: chrome  # chrome, firefox, or edge
+headless: true
+user_agent: null  # custom user agent string
+proxy: null       # format: "ip:port" or "user:pass@ip:port"
+
+# Behavior settings
+auto_scroll: true
+scroll_pause: 1.0
+max_scroll: 3
+random_delay: true
+delay_range: [2, 8]  # random delay range in seconds
+
+# Scheduler settings (for scheduled execution)
+schedule_enabled: false
+schedule_type: interval  # interval or cron
+schedule_value: "1h"     # examples: "1h", "30m", "*/30 * * * *"
+
+# Advanced options
+retry_attempts: 3
+retry_delay: 5
+log_level: INFO
+log_file: auto_visitor.log
+log_rotate: true
+max_log_size: "1MB"
+backup_count: 3
+
+# Environment variables (set these in your environment)
+# PROXY_USER: username
+# PROXY_PASS: password
+# CUSTOM_HEADERS: '{"Authorization": "Bearer token123"}'

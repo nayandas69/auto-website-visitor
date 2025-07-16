@@ -1,0 +1,253 @@
+# Auto Website Visitor - GitHub Actions Workflow Example
+# Version: 3.0.0
+# 
+# This workflow demonstrates how to use Auto Website Visitor in GitHub Actions
+# for automated website visiting with scheduling capabilities.
+#
+# Features:
+# - Manual trigger with custom parameters
+# - Scheduled execution (weekly by default)
+# - Chrome browser with headless mode
+# - Intelligent caching for faster execution
+# - Proper error handling and logging
+
+name: Auto Website Visitor - Automated Execution
+
+# Trigger Configuration
+on:
+  # Manual trigger - allows running workflow with custom parameters
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'Website URL to visit'
+        required: true
+        default: 'https://example.com'
+        type: string
+      visit_count:
+        description: 'Number of visits to perform'
+        required: true
+        default: 5
+        type: number
+      browser:
+        description: 'Browser to use'
+        required: true
+        default: 'chrome'
+        type: choice
+        options:
+          - chrome
+          - firefox
+          - edge
+      headless:
+        description: 'Run in headless mode'
+        required: true
+        default: true
+        type: boolean
+      auto_scroll:
+        description: 'Enable auto-scrolling'
+        required: false
+        default: false
+        type: boolean
+
+  # Scheduled trigger - runs every Sunday at 2:00 AM UTC
+  # Modify the cron expression as needed:
+  # - '0 2 * * 0'     = Every Sunday at 2:00 AM UTC
+  # - '0 9 * * 1-5'   = Every weekday at 9:00 AM UTC
+  # - '*/30 * * * *'  = Every 30 minutes
+  schedule:
+    - cron: '0 2 * * 0'  # Weekly execution
+
+# Security and resource limits
+permissions:
+  contents: read  # Only read access needed
+
+jobs:
+  visit-website:
+    name: Execute Website Visitor
+    runs-on: ubuntu-latest
+    timeout-minutes: 15  # Prevent hanging workflows
+
+    steps:
+      # Step 1: Set up Python environment
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+          cache: 'pip'  # Cache pip dependencies for faster builds
+
+      # Step 2: Cache Chrome installation for faster subsequent runs
+      - name: Cache Chrome Installation
+        id: chrome-cache
+        uses: actions/cache@v3
+        with:
+          path: ~/chrome-download
+          key: chrome-cache-v2-${{ runner.os }}
+          restore-keys: |
+            chrome-cache-v2-
+            chrome-cache-
+
+      # Step 3: Install Google Chrome browser
+      - name: Install Google Chrome
+        run: |
+          echo "Installing Google Chrome browser..."
+          
+          # Create cache directory
+          CHROME_DIR="$HOME/chrome-download"
+          CHROME_DEB="$CHROME_DIR/google-chrome-stable_current_amd64.deb"
+          
+          # Download Chrome if not cached
+          if [ ! -f "$CHROME_DEB" ]; then
+            echo "📥 Downloading Chrome (not found in cache)..."
+            mkdir -p "$CHROME_DIR"
+            wget -q -O "$CHROME_DEB" https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+            echo "✅ Chrome downloaded successfully"
+          else
+            echo "✅ Chrome found in cache, skipping download"
+          fi
+          
+          # Copy to working directory for installation
+          cp "$CHROME_DEB" ./chrome.deb
+          
+          # Update package list and install Chrome
+          echo "Installing Chrome and dependencies..."
+          sudo apt-get update -qq
+          sudo apt-get install -y ./chrome.deb
+          
+          # Verify installation
+          google-chrome --version
+          echo "✅ Chrome installation completed"
+
+      # Step 4: Set up Python virtual environment and install Auto Website Visitor
+      - name: Install Auto Website Visitor
+        run: |
+          echo "Setting up Python environment..."
+          
+          # Create virtual environment
+          python -m venv venv
+          source venv/bin/activate
+          
+          # Upgrade pip for better dependency resolution
+          pip install --upgrade pip
+          
+          # Install Auto Website Visitor with specific version
+          echo "📦 Installing Auto Website Visitor v2025.1.16..."
+          pip install auto-website-visitor==2025.1.16
+          
+          # Verify installation
+          awv --version
+          echo "✅ Auto Website Visitor installed successfully"
+
+      # Step 5: Execute Auto Website Visitor (Manual Trigger)
+      - name: Run AWV (Manual Trigger)
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          echo "Starting Manual Execution"
+          echo "URL: ${{ github.event.inputs.url }}"
+          echo "Visit Count: ${{ github.event.inputs.visit_count }}"
+          echo "Browser: ${{ github.event.inputs.browser }}"
+          echo "Headless: ${{ github.event.inputs.headless }}"
+          echo "Auto Scroll: ${{ github.event.inputs.auto_scroll }}"
+          echo "----------------------------------------"
+          
+          # Activate virtual environment
+          source venv/bin/activate
+          
+          # Build command with user inputs
+          AWV_CMD="awv --url '${{ github.event.inputs.url }}' --count ${{ github.event.inputs.visit_count }} --browser ${{ github.event.inputs.browser }} --log-level INFO"
+          
+          # Add headless flag if enabled
+          if [ "${{ github.event.inputs.headless }}" = "true" ]; then
+            AWV_CMD="$AWV_CMD --headless"
+          fi
+          
+          # Add auto-scroll flag if enabled
+          if [ "${{ github.event.inputs.auto_scroll }}" = "true" ]; then
+            AWV_CMD="$AWV_CMD --auto-scroll"
+          fi
+          
+          # Execute the command
+          echo "🏃 Executing: $AWV_CMD"
+          eval $AWV_CMD
+          
+          echo "✅ Manual execution completed successfully"
+
+      # Step 6: Execute Auto Website Visitor (Scheduled Trigger)
+      - name: Run AWV (Scheduled Execution)
+        if: github.event_name == 'schedule'
+        run: |
+          echo "Starting Scheduled Execution"
+          echo "URL: https://nayandas69.github.io/link-in-bio/"
+          echo "Visit Count: 5"
+          echo "Browser: Chrome (Headless)"
+          echo "Schedule: Weekly (Sunday 2:00 AM UTC)"
+          echo "----------------------------------------"
+          
+          # Activate virtual environment
+          source venv/bin/activate
+          
+          # Execute with predefined settings for scheduled runs
+          awv --url "https://nayandas69.github.io/link-in-bio/" \
+              --count 5 \
+              --browser chrome \
+              --headless \
+              --auto-scroll \
+              --log-level INFO \
+              --random-delay
+          
+          echo "✅ Scheduled execution completed successfully"
+
+      # Step 7: Upload logs as artifacts (optional, for debugging)
+      - name: Upload Execution Logs
+        if: always()  # Run even if previous steps fail
+        uses: actions/upload-artifact@v3
+        with:
+          name: awv-logs-${{ github.run_number }}
+          path: |
+            auto_visitor.log
+            *.log
+          retention-days: 7  # Keep logs for 7 days
+
+# Environment variables for the entire workflow
+env:
+  PYTHONUNBUFFERED: 1  # Ensure Python output is not buffered
+  DEBIAN_FRONTEND: noninteractive  # Prevent interactive prompts during apt installs
+
+# Concurrency control - prevent multiple instances running simultaneously
+concurrency:
+  group: auto-website-visitor-${{ github.ref }}
+  cancel-in-progress: true
+
+# Additional workflow configuration
+defaults:
+  run:
+    shell: bash  # Use bash for all run commands
+
+# Workflow metadata
+# 
+# Usage Instructions:
+# 
+# 1. Manual Execution:
+#    - Go to Actions tab in your GitHub repository
+#    - Select "Auto Website Visitor - Automated Execution"
+#    - Click "Run workflow"
+#    - Fill in the parameters and click "Run workflow"
+# 
+# 2. Scheduled Execution:
+#    - Automatically runs every Sunday at 2:00 AM UTC
+#    - Modify the cron expression in the 'schedule' section to change timing
+# 
+# 3. Customization:
+#    - Change default URL in workflow_dispatch inputs
+#    - Modify scheduled execution parameters in the scheduled step
+#    - Add additional browsers by updating the browser choice options
+#    - Adjust timeout-minutes based on your needs
+# 
+# 4. Monitoring:
+#    - Check the Actions tab for execution status
+#    - Download logs from the artifacts section
+#    - Monitor for any failures and adjust parameters accordingly
+# 
+# Security Notes:
+# - This workflow only requires 'contents: read' permissions
+# - No secrets or sensitive data are used
+# - All operations are performed in isolated GitHub Actions runners
+# - Chrome is installed fresh for each run for security
