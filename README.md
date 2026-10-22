@@ -1,3 +1,7 @@
+> [!NOTE]
+Project Status: ArchivedThis project is no longer actively maintained, and no further updates or new features are planned. The repository will remain available for anyone who finds it useful. Thanks to everyone who has taken an interest in this project and supported it along the way.
+
+
 # Auto Website Visitor
 
 A powerful Python package for automated website visiting with advanced browser automation, scheduling capabilities, and comprehensive configuration options.
