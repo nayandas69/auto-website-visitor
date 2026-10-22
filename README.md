@@ -1,5 +1,5 @@
 > [!NOTE]
-Project Status: ArchivedThis project is no longer actively maintained, and no further updates or new features are planned. The repository will remain available for anyone who finds it useful. Thanks to everyone who has taken an interest in this project and supported it along the way.
+Project Status: ArchivedThis project is no longer actively maintained, and no further updates or new features are planned. The repository will remain available for anyone who finds it useful. Thanks to everyone who has taken an interest in this project and supported it along the way. 
 
 
 # Auto Website Visitor
@@ -8,9 +8,6 @@ A powerful Python package for automated website visiting with advanced browser a
 
 > \[!CAUTION]
 > This package is designed for legitimate testing and automation purposes. Ensure compliance with website terms of service and applicable laws.
-
-> \[!NOTE]
-> This package is under active development. Features and APIs may change in future releases.
 
 ![Workflow Status](https://img.shields.io/github/actions/workflow/status/nayandas69/auto-website-visitor/buildpypi.yml?style=flat-square&color=4DB6AC&logo=github)
 ![Python Version](https://img.shields.io/pypi/pyversions/auto-website-visitor?style=flat-square&color=42A5F5&logo=python)
